@@ -6,11 +6,11 @@ import Slider from "@/components/Slider";
 
 export default function Home() {
   return (
-    <main>
+    <main className=" w-fit"> 
       <Slider />
       <Featured />
       <Offer />
-      
+
     </main>
     
   );
