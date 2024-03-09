@@ -4,11 +4,12 @@ import "./globals.css";
 import Notifications from "@/components/Notifications";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AuthProvider from "@/components/AuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Food Delivery App",
+  title: "PIZZINO Restaurant",
   description: "Order food from your favorite restaurant",
 };
 
@@ -21,13 +22,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
 
-        <Notifications />
-        <Navbar />
-        
-        {children}
+        <AuthProvider>
+            <Notifications />
+            <Navbar />
+            
+            {children}
 
-        <Footer />
-        
+            <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
