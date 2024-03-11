@@ -7,7 +7,6 @@ import UserLinks from './UserLinks';
 
 const Navbar = () => {
 
-    const user = false;
 
   return (
 
