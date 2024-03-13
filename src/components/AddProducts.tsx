@@ -19,7 +19,7 @@ const AddProducts = () => {
     { session?.user.isAdmin ? (
           <div className="flex" >
             <button className=" flex items-center justify-center gap-2 bg-red-300 rounded-full p-2 text-white" onClick={handleClick}>
-              <Image src='/add3.png' alt="add" width={50} height={50} />
+              <Image src='/add3.png' alt="add" width={35} height={35} />
               <span className="font-bold">Add Products</span>
             </button>
             
