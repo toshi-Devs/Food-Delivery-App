@@ -34,7 +34,7 @@ import { toast } from 'react-toastify'
     useEffect(() => {
         if (product.options?.length) {
           setTotal(
-            quantity * product.price + product.options[selected].additionalPrice
+            quantity * product.price + Number(product.options[selected].additionalPrice)
           );
         }
       }, [quantity, selected, product]);
