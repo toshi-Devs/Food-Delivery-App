@@ -179,7 +179,7 @@ const handleChangeImg = (e: React.ChangeEvent<HTMLInputElement>) => {
   
       const data = await res.json();
   
-      //   router.push(`/product/${data.id}`);
+      router.push(`/product/${data.id}`);
     } catch (err) {
       console.log('error is ' + err);
     }

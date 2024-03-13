@@ -1,4 +1,5 @@
  
+import AddProducts from '@/components/AddProducts';
 import { MenuType } from '@/types/type';
 import Link from 'next/link';
 import React from 'react'
@@ -21,7 +22,12 @@ const MenuPage = async () => {
   const menu: MenuType = await getData()
 
   return (
-    <div className='p-4 lg:px-20 xl:px-40 h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] flex flex-col md:flex-row items-center'>
+    <div className='p-4 lg:px-20 xl:px-40 h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] flex flex-col md:flex-row items-center relative'>
+
+      <div className='absolute top-4 right-4'>
+        <AddProducts />
+      </div>
+      
 
         { menu.map((category) => (
             <Link 
@@ -34,7 +40,7 @@ const MenuPage = async () => {
                 <div className={`text-${category.color} w-1/2`}>
                     <h1 className='uppercase font-bold text-xl'>{category.title}</h1>
                     <p className='text-sm my-8'>{category.desc}</p>
-                    <button className={`hidden xl:block bg-${category.color} text-${category.color === "black" ? "white" : "red-500"} rounded-md px-4 py-2`}> Explore</button>
+                    <button className={`hidden xl:block bg-sky-200 text-white rounded-md px-4 py-2`}> Explore</button>
                 </div>
                  
             </Link>
