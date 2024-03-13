@@ -3,7 +3,11 @@
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { useState } from "react";
+
+
+import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
+import storage from "@/firebase";
 
 type Inputs = {
   title: string;
@@ -78,27 +82,110 @@ const AddPage = () => {
 //     return resData.url;
 //   };
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+///
 
+const handleChangeImg = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const target = e.target as HTMLInputElement;
+    const item = (target.files as FileList)[0];
+    setFile(item);
+  };
+  
+  const upload = async () => {
+    if (!file) {
+      throw new Error("No file selected");
+    }
+  
+    const storageRef = ref(storage, 'images/' + file.name);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+  
+    return new Promise<string>((resolve, reject) => {
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          // Track upload progress if needed
+        },
+        (error) => {
+          reject(error);
+        },
+        async () => {
+          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+          console.log('File available at', downloadURL);
+          resolve(downloadURL);
+        }
+      );
+    });
+  };
+  
+
+///
+    // const upload = async () => {
+    //     const storageRef = ref(storage, 'images/' + file!.name);
+    //     const uploadTask = uploadBytesResumable(storageRef, file!);
+    
+    //     uploadTask.on(
+    //     'state_changed',
+    //     (snapshot) => {
+    //         // Track upload progress if needed
+    //     },
+    //     (error) => {
+    //         console.error(error);
+    //     },
+    //     async () => {
+    //         const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+    //         console.log('File available at', downloadURL);
+    //         return downloadURL;
+    //     }
+    //     );
+    // };
+
+///
+
+//     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+//     e.preventDefault();
+
+//     try {
+//     //   const url = await upload();
+//       const res = await fetch("http://localhost:3000/api/products", {
+//         method: "POST",
+//         body: JSON.stringify({
+//         //   img: url,
+//           ...inputs,
+//           options,
+//         }),
+//       });
+
+//       const data = await res.json();
+
+//     //   router.push(`/product/${data.id}`);
+//     } catch (err) {
+//       console.log("error is " + err);
+//     }
+//   };
+
+  ///
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  
     try {
-    //   const url = await upload();
-      const res = await fetch("http://localhost:3000/api/products", {
-        method: "POST",
+      const url = await upload();
+      const res = await fetch('http://localhost:3000/api/products', {
+        method: 'POST',
         body: JSON.stringify({
-        //   img: url,
+          img: url,
           ...inputs,
           options,
         }),
       });
-
+  
       const data = await res.json();
-
-    //   router.push(`/product/${data.id}`);
+  
+      //   router.push(`/product/${data.id}`);
     } catch (err) {
-      console.log("error is " + err);
+      console.log('error is ' + err);
     }
   };
+
+  ///
 
   return (
     <div className="p-4 lg:px-20 xl:px-40 h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] flex items-center justify-center text-red-500 xl:h-[calc(100vh-3rem)]">
@@ -116,7 +203,7 @@ const AddPage = () => {
           </label>
           <input
             type="file"
-            // onChange={handleChangeImg}
+            onChange={handleChangeImg}
             id="file"
             className="hidden"
           />
