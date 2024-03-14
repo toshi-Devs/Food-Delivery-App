@@ -2,13 +2,13 @@
 A modern italian food restaurant application where the user can check the menu and order the food, and login to see orders. The admin can add products and delete them and also he can edit the order status.
 
 ## ⚡ Technologies
-`Next.js`
-`Prisma`
-`PostgreSQL`
-`TailwindCSS`
-`Typescript`
-`Zustand`
-`Stripe`
+- `Next.js`
+- `Typescript`
+- `Prisma`
+- `PostgreSQL`
+- `TailwindCSS`
+- `Zustand`
+- `Stripe`
 
 ## 🚀 Features
 
@@ -25,3 +25,11 @@ I began by gathering all the necessary images for the menu and the restaurant. T
 ## 🎥 Demo/Preview
 
 
+
+## 🚦 Running the Project
+To run the project in your local environment, follow these steps:
+
+1. Clone the repository
+2. Navigate to the project directory and `run npm install` or `yarn` to install the required dependencies.
+3. Run `npm run dev` or `yarn dev` to start the development server
+4. Open `http://localhost:3000` to view the application
