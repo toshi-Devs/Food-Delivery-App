@@ -12,22 +12,18 @@ A modern italian food restaurant application where the user can check the menu a
 
 ## 🚀 Features
 
-- User can check the menu
-- User can order the food
-- User can login to see orders
-- Admin can add products
-- Admin can delete products
-- Admin can edit the order status
+- **User Authentication**: Users can sign up and login to the application
+- **Menu**: Users can check the menu
+- **Order**: Users can order the food
+- **Order History**: Users can login to see orders
+- **Admin**: Admin can add products, delete products, and edit the order status
 
 ## 💭 Process
 I began by gathering all the necessary images for the menu and the restaurant. Then, I started by hard coding the front-end application as you can see it's deployed on vercel for now, and after that i connected PostgreSQL and prisma for the back-end development to make the application dynamic. Then, I established constants and implemented Zustand for state management. Next, I added the stripe payment system to the application.
 
 ## 🎥 Demo/Preview
 
-
-
 https://github.com/toshi-Devs/Food-Delivery-App/assets/136498732/60e4ad7c-a2d7-49b9-a823-00a978b45aa1
-
 
 
 ## 🚦 Running the Project
