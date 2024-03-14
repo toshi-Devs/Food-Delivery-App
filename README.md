@@ -26,6 +26,10 @@ I began by gathering all the necessary images for the menu and the restaurant. T
 
 
 
+https://github.com/toshi-Devs/Food-Delivery-App/assets/136498732/60e4ad7c-a2d7-49b9-a823-00a978b45aa1
+
+
+
 ## 🚦 Running the Project
 To run the project in your local environment, follow these steps:
 
